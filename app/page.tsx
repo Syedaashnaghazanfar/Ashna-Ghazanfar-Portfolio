@@ -29,33 +29,35 @@ const HomePage = async () => {
           <div className="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48">
             <div className="flex flex-col items-center justify-center lg:flex-row">
               <div className="rounded-full border-8 border-white shadow-xl">
-                <img
+                <Image
                   src="/assets/img/me.jpg"
                   className="h-48 rounded-full sm:h-56"
                   alt="author"
+                  width={200}
+                  height={200}
                 />
               </div>
               <div className="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
                 <h1 className="text-center font-header text-4xl text-white sm:text-left sm:text-5xl md:text-6xl">
-                  Hello I'm Ashna Ghazanfar!
+                  Hello I am Ashna Ghazanfar!
                 </h1>
                 <div className="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start">
                   <div className="flex items-center justify-center pl-0 sm:justify-start md:pl-1">
                     <p className="font-body text-lg uppercase text-white">
-                      Let's connect
+                      Let us connect
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
-                  <a href="https://www.instagram.com/s_ashnaali/">
+                  <Link href="https://www.instagram.com/s_ashnaali/">
                     <Image
                       src="/assets/img/instagram (1).png"
                       alt="instagram"
                       width={30}
                       height={30}
                     />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://www.linkedin.com/in/ashna-ghazanfar-b268522b4/"
                     className="pl-4"
                   >
@@ -65,8 +67,8 @@ const HomePage = async () => {
                       width={30}
                       height={30}
                     />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://github.com/Syedaashnaghazanfar"
                     className="pl-4"
                   >
@@ -76,7 +78,7 @@ const HomePage = async () => {
                       width={30}
                       height={30}
                     />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -183,7 +185,7 @@ const HomePage = async () => {
         {/* Services */}
         <div className="container py-16 md:py-20" id="services">
           <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
-            Here's what I'm good at
+            Here is what I am good at
           </h2>
           <h3 className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
             These are the services I offer
@@ -192,9 +194,11 @@ const HomePage = async () => {
           <div className="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 md:gap-10 md:pt-12 lg:grid-cols-3">
             <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
               <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <img
+                <Image
                   src="/assets/img/web-development.png"
                   alt="development icon"
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="text-center">
@@ -210,9 +214,11 @@ const HomePage = async () => {
             </div>
             <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
               <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <img
+                <Image
                   src="/assets/img/initiative.png"
                   alt="content marketing icon"
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="text-center">
@@ -227,9 +233,11 @@ const HomePage = async () => {
             </div>
             <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
               <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <img
+                <Image
                   src="/assets/img/design-thinking.png"
                   alt="Mobile Application icon"
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="text-center">
@@ -244,7 +252,8 @@ const HomePage = async () => {
             </div>
             <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
               <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <img src="/assets/img/creative.png" alt="creative" />
+                <Image src="/assets/img/creative.png" alt="creative"   width={100}
+                  height={100} />
               </div>
               <div className="text-center">
                 <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
@@ -258,7 +267,8 @@ const HomePage = async () => {
             </div>
             <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
               <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <img src="/assets/img/biology.png" alt="Theme Design icon" />
+                <Image src="/assets/img/biology.png" alt="Theme Design icon"   width={100}
+                  height={100} />
               </div>
               <div className="text-center">
                 <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
@@ -272,7 +282,8 @@ const HomePage = async () => {
             </div>
             <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
               <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <img src="/assets/img/baker.png" alt="baker icon" />
+                <Image src="/assets/img/baker.png" alt="baker icon"   width={100}
+                  height={100}/>
               </div>
               <div className="text-center">
                 <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
@@ -293,50 +304,59 @@ const HomePage = async () => {
             Check out my Portfolio
           </h2>
           <h3 className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
-            Here's what I have done with the past
+            Here is what I have done with the past
           </h3>
 
           <div className="mx-auto grid w-full grid-cols-1 gap-8 px-4 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2 lg:px-8">
-            <a
+            <Link
               href="https://duas-diary.vercel.app/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
-              <img
+              <Image
                 src="/assets/img/dua.png"
                 className="w-full shadow"
                 alt="portfolio image"
+                width={500}
+                height={500}
+
               />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://syeda-coffee-website.vercel.app/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
-              <img
+              <Image
                 src="/assets/img/coffee.png"
                 className="w-full shadow"
                 alt="portfolio image"
+                width={500}
+                height={500}
               />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://syeda-ui-ux-hackhaton.vercel.app/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
-              <img
+              <Image
                 src="/assets/img/bandage.png"
                 className="w-full shadow"
                 alt="portfolio image"
+                width={500}
+                height={500}
               />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://syeda-shop-co.vercel.app/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
-              <img
+              <Image
                 src="/assets/img/shop.png"
                 className="w-full shadow"
                 alt="portfolio image"
+                width={500}
+                height={500}
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -351,10 +371,12 @@ const HomePage = async () => {
               <div className="grid grid-cols-2 gap-5 md:gap-8 xl:grid-cols-4 xl:gap-5">
                 <div className="flex flex-col items-center justify-center text-center md:flex-row md:text-left">
                   <div>
-                    <img
+                    <Image
                       src="/assets/img/icon-project.svg"
                       className="mx-auto h-12 w-auto md:h-20"
                       alt="icon project"
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <div className="pt-5 md:pl-5 md:pt-0">
@@ -369,10 +391,12 @@ const HomePage = async () => {
 
                 <div className="flex flex-col items-center justify-center text-center md:flex-row md:text-left">
                   <div>
-                    <img
+                    <Image
                       src="/assets/img/icon-award.svg"
                       className="mx-auto h-12 w-auto md:h-20"
                       alt="icon award"
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <div className="pt-5 md:pl-5 md:pt-0">
@@ -387,10 +411,12 @@ const HomePage = async () => {
 
                 <div className="mt-6 flex flex-col items-center justify-center text-center md:mt-10 md:flex-row md:text-left lg:mt-0">
                   <div>
-                    <img
+                    <Image
                       src="/assets/img/icon-happy.svg"
                       className="mx-auto h-12 w-auto md:h-20"
                       alt="icon happy clients"
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <div className="pt-5 md:pl-5 md:pt-0">
@@ -405,10 +431,12 @@ const HomePage = async () => {
 
                 <div className="mt-6 flex flex-col items-center justify-center text-center md:mt-10 md:flex-row md:text-left lg:mt-0">
                   <div>
-                    <img
+                    <Image
                       src="/assets/img/icon-puzzle.svg"
                       className="mx-auto h-12 w-auto md:h-20"
                       alt="icon puzzle"
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <div className="pt-5 md:pl-5 md:pt-0">
@@ -483,17 +511,17 @@ const HomePage = async () => {
         {/* contact */}
         <div className="container py-16 md:py-20" id="contact">
           <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
-            Here's a contact form
+            Here is a contact form
           </h2>
           <h4 className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
             Have Any Questions?
           </h4>
           <div className="mx-auto w-full pt-5 text-center sm:w-2/3 lg:pt-6">
             <p className="font-body text-grey-10">
-              "Feel free to reach out! Whether you have questions, need
+              Feel free to reach out! Whether you have questions, need
               assistance, or just want to connect, I’m here to help. You can
               contact me via email or phone, and I’ll get back to you as soon as
-              possible. I look forward to hearing from you!"
+              possible. I look forward to hearing from you!
             </p>
           </div>
           <form className="mx-auto w-full pt-10 sm:w-3/4">

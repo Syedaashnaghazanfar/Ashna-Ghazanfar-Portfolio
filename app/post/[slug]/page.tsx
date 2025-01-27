@@ -1,6 +1,7 @@
 import Comments from "@/app/components/comments";
 import Navbar from "@/app/components/navbar";
 import { PortableText } from "@portabletext/react";
+import Image from 'next/image';
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 
@@ -8,7 +9,6 @@ interface Post {
   authorName: string;
   authorImage: string;
   publishedAt: string | number | Date;
-  slugCurrent: any;
   _id: string;
   title: string;
   slug: { current: string };
@@ -28,6 +28,7 @@ async function getProduct(slug: string): Promise<Post | null> {
        "authorImage": author->image.asset->url,
        body,
        publishedAt,
+       "mainImageUrl": mainImage.asset->url
     }`,
     { slug }
   );
@@ -64,9 +65,11 @@ export default async function PostPage({ params }: PostPageProps) {
             {/* Author Section */}
             <div className="flex flex-col items-center justify-center pt-8 md:pt-10 md:flex-row">
               <div className="flex-shrink-0">
-                <img
+                <Image
                   src={post.authorImage || "/assets/img/me.jpg"}
                   className="h-20 w-20 rounded-full border-2 border-gray-300 shadow-md"
+                  width={post.authorImage ? 80 : 0}
+                  height={80}
                   alt="Author"
                 />
               </div>
