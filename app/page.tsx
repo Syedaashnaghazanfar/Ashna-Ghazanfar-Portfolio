@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { createClient } from "@sanity/client";
 import Script from "next/script";
 import Navbar from "@/app/components/navbar";
 import Link from "next/link";

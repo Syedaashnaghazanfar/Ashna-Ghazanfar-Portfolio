@@ -1,8 +1,8 @@
 import Comments from "@/app/components/comments";
 import Navbar from "@/app/components/navbar";
-import { createClient, groq } from "next-sanity";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
+import { groq } from "next-sanity";
 
 interface Post {
   authorName: string;
