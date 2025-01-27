@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from 'next/image';
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
+import { TypedObject } from "sanity";
 
 interface Post {
   authorName: string;
@@ -13,7 +14,7 @@ interface Post {
   title: string;
   slug: { current: string };
   author: string;
-  body: any;
+  body: TypedObject[];
   mainImageUrl: string;
 }
 interface PostPageProps {

@@ -94,7 +94,7 @@ const HomePage = async () => {
                 Who am I?
               </h2>
               <h4 className="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
-                I'm Ashna Ghazanfar, a Front End Developer & Student
+                I am Ashna Ghazanfar, a Front End Developer & Student
               </h4>
               <p className="pt-6 font-body leading-relaxed text-grey-20">
                 I am a first-year medical student with a passion for blending
