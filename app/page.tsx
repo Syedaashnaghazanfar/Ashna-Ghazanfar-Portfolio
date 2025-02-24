@@ -6,7 +6,7 @@ import { Post } from "@/types/post";
 import { client } from "@/sanity/lib/client";
 import { query } from "@/sanity/lib/queries";
 import { FiInstagram, FiLinkedin, FiGithub } from 'react-icons/fi';
-import { FaHtml5, FaCss3Alt, FaReact, FaPython, FaFigma } from "react-icons/fa";
+import { FaHtml5, FaPython, FaFigma } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiSanity } from "react-icons/si";
 
 const HomePage = async () => {
@@ -66,7 +66,7 @@ const HomePage = async () => {
         <div className="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
           {/* Typewriter Animation */}
           <h1 className="text-center font-header text-4xl text-white sm:text-left sm:text-5xl md:text-6xl typewriter">
-            Hello I'm <span className="text-yellow-400">Ashna Ghazanfar!</span>
+            Hello I am <span className="text-yellow-400">Ashna Ghazanfar!</span>
           </h1>
 
           {/* Social Icons */}
@@ -121,120 +121,47 @@ const HomePage = async () => {
       </div>
     </div>
         {/* Services */}
-        <div className="container py-16 md:py-20" id="services">
-          <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
-            Here is what I am good at
-          </h2>
-          <h3 className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
-            These are the services I offer
-          </h3>
+        <div className="container py-16 md:py-20 px-4 sm:px-8 lg:px-16" id="services">
+      <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+        Here is what I am good at
+      </h2>
+      <h3 className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+        These are the services I offer
+      </h3>
 
-          <div className="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 md:gap-10 md:pt-12 lg:grid-cols-3">
-            <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
-              <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <Image
-                  src="/assets/img/web-development.png"
-                  alt="development icon"
-                  width={100}
-                  height={100}
-                />
-              </div>
-              <div className="text-center">
-                <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-                  WEB DEVELOPMENT
-                </h3>
-                <p className="text-grey pt-4 text-sm  md:text-base">
-                  A passionate web developer skilled in crafting visually
-                  stunning and functional websites using modern tools like
-                  Next.js, TypeScript, and Figma.
-                </p>
-              </div>
+      <div className="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 md:gap-10 md:pt-12 lg:grid-cols-3">
+        {[  
+          { img: "web-development.png", title: "WEB DEVELOPMENT", desc: "Crafting modern and stunning websites with Next.js, TypeScript, and Figma." },
+          { img: "initiative.png", title: "PROBLEM SOLVER", desc: "Thrives on tackling challenges and finding innovative solutions to complex coding and design issues." },
+          { img: "design-thinking.png", title: "CREATIVE IDEAS", desc: "Brings fresh, imaginative ideas to every project, blending functionality with aesthetics." },
+          { img: "creative.png", title: "MOBILE EDITOR", desc: "Enhancing visuals and content on the go with precision and a keen eye for detail." },
+          { img: "biology.png", title: "BIOLOGY TEACHER", desc: "Shares the wonders of biology with engaging teaching techniques." },
+          { img: "baker.png", title: "SELF-TAUGHT BAKER", desc: "Turning simple ingredients into delightful creations with creativity and passion." }
+        ].map((service, index) => (
+          <div
+            key={index}
+            className="group relative overflow-hidden rounded px-8 py-12 shadow-lg border-2 border-yellow-400 border-t-4 border-r-0 border-b-0 border-l-4 transition-all duration-500 hover:scale-105 hover:border-r-4 hover:border-l-0 mx-4 sm:mx-6 md:mx-8 lg:mx-4"
+          >
+            <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
+              <Image
+                src={`/assets/img/${service.img}`}
+                alt={service.title}
+                width={100}
+                height={100}
+              />
             </div>
-            <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
-              <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <Image
-                  src="/assets/img/initiative.png"
-                  alt="content marketing icon"
-                  width={100}
-                  height={100}
-                />
-              </div>
-              <div className="text-center">
-                <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-                  Problem Solver
-                </h3>
-                <p className="text-grey pt-4 text-sm  md:text-base">
-                  Thrives on tackling challenges and finding innovative
-                  solutions to complex coding and design issues.
-                </p>
-              </div>
-            </div>
-            <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
-              <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <Image
-                  src="/assets/img/design-thinking.png"
-                  alt="Mobile Application icon"
-                  width={100}
-                  height={100}
-                />
-              </div>
-              <div className="text-center">
-                <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-                  CREATIVE IDEAS
-                </h3>
-                <p className="text-grey pt-4 text-sm  md:text-base">
-                  Brings fresh, imaginative ideas to every project, blending
-                  functionality with aesthetics.
-                </p>
-              </div>
-            </div>
-            <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
-              <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <Image src="/assets/img/creative.png" alt="creative"   width={100}
-                  height={100} />
-              </div>
-              <div className="text-center">
-                <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-                  MOBILE EDITOR
-                </h3>
-                <p className="text-grey pt-4 text-sm  md:text-base">
-                  Enhancing visuals and content on the go with precision and a
-                  keen eye for detail.
-                </p>
-              </div>
-            </div>
-            <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
-              <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <Image src="/assets/img/biology.png" alt="Theme Design icon"   width={100}
-                  height={100} />
-              </div>
-              <div className="text-center">
-                <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-                  BIOLOGY TEACHER
-                </h3>
-                <p className="text-grey pt-4 text-sm  md:text-base">
-                  Shares the wonders of biology with students, combining
-                  knowledge with engaging teaching techniques.
-                </p>
-              </div>
-            </div>
-            <div className="group rounded px-8 py-12 shadow hover:bg-gray-300 transition-colors duration-300">
-              <div className="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
-                <Image src="/assets/img/baker.png" alt="baker icon"   width={100}
-                  height={100}/>
-              </div>
-              <div className="text-center">
-                <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-                  SELF TAUGHT BAKER
-                </h3>
-                <p className="text-grey pt-4 text-sm  md:text-base">
-                  A dedicated baker who turns simple ingredients into delightful
-                  creations, showcasing creativity and love for learning.
-                </p>
-              </div>
+            <div className="text-center">
+              <h3 className="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow-500 lg:text-xl">
+                {service.title}
+              </h3>
+              <p className="text-gray-700 pt-4 text-sm md:text-base transition-opacity duration-300 hover:opacity-80">
+                {service.desc}
+              </p>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
+    </div>
 
         {/* portfolio */}
         <div className="container py-16 md:py-20" id="portfolio">
