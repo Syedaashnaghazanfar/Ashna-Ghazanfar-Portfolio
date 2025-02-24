@@ -5,9 +5,20 @@ import Link from "next/link";
 import { Post } from "@/types/post";
 import { client } from "@/sanity/lib/client";
 import { query } from "@/sanity/lib/queries";
+import { FiInstagram, FiLinkedin, FiGithub } from 'react-icons/fi';
+import { FaHtml5, FaCss3Alt, FaReact, FaPython, FaFigma } from "react-icons/fa";
+import { SiTypescript, SiNextdotjs, SiSanity } from "react-icons/si";
 
 const HomePage = async () => {
   const posts: Post[] = await client.fetch(query); // Fetch posts using the globally defined client
+  const skills = [
+    { name: "HTML & CSS", icon: <FaHtml5 className="text-orange-500" />, percentage: 85, color: "bg-orange-500" },
+    { name: "Next.js", icon: <SiNextdotjs className="text-black" />, percentage: 75, color: "bg-black" },
+    { name: "TypeScript", icon: <SiTypescript className="text-blue-600" />, percentage: 70, color: "bg-blue-600" },
+    { name: "Figma to Next js", icon: <FaFigma className="text-purple-500" />, percentage: 91, color: "bg-purple-500" },
+    { name: "Python", icon: <FaPython className="text-yellow-500" />, percentage: 30, color: "bg-yellow-500" },
+    { name: "Sanity", icon: <SiSanity className="text-red-500" />, percentage: 90, color: "bg-red-500" },
+  ];
 
   return (
     <>
@@ -15,173 +26,100 @@ const HomePage = async () => {
       {/* navbar */}
       <Navbar />
       {/* main page */}
-      <div>
-        {/* hero */}
-        <div
-          className="relative bg-cover bg-center bg-no-repeat py-8"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(/assets/img/bg-hero.jpg)",
-          }}
-        >
-          <div className="absolute inset-0 z-20 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to bg-cover bg-center bg-no-repeat"></div>
+      <div id="home">
+  {/* Bubbles Animation */}
+  <div className="bubbles">
+    {[...Array(10)].map((_, i) => (
+      <div key={i} className="bubble" style={{ 
+        '--size': `${2 + Math.random() * 4}rem`,
+        '--distance': `${6 + Math.random() * 4}rem`,
+        '--duration': `${2 + Math.random() * 2}s`,
+        '--delay': `${-1 * (1 + Math.random() * 3)}s`
+      } as React.CSSProperties}></div>
+    ))}
+  </div>
 
-          <div className="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48">
-            <div className="flex flex-col items-center justify-center lg:flex-row">
-              <div className="rounded-full border-8 border-white shadow-xl">
-                <Image
-                  src="/assets/img/me.jpg"
-                  className="h-48 rounded-full sm:h-56"
-                  alt="author"
-                  width={200}
-                  height={200}
-                />
-              </div>
-              <div className="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
-                <h1 className="text-center font-header text-4xl text-white sm:text-left sm:text-5xl md:text-6xl">
-                  Hello I am Ashna Ghazanfar!
-                </h1>
-                <div className="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start">
-                  <div className="flex items-center justify-center pl-0 sm:justify-start md:pl-1">
-                    <p className="font-body text-lg uppercase text-white">
-                      Let us connect
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
-                  <Link href="https://www.instagram.com/s_ashnaali/">
-                    <Image
-                      src="/assets/img/instagram (1).png"
-                      alt="instagram"
-                      width={30}
-                      height={30}
-                    />
-                  </Link>
-                  <Link
-                    href="https://www.linkedin.com/in/ashna-ghazanfar-b268522b4/"
-                    className="pl-4"
-                  >
-                    <Image
-                      src="/assets/img/linkedin.png"
-                      alt="in"
-                      width={30}
-                      height={30}
-                    />
-                  </Link>
-                  <Link
-                    href="https://github.com/Syedaashnaghazanfar"
-                    className="pl-4"
-                  >
-                    <Image
-                      src="/assets/img/github.png"
-                      alt="github"
-                      width={30}
-                      height={30}
-                    />
-                  </Link>
-                </div>
-              </div>
-            </div>
+  {/* Hero Section */}
+  <div className="relative bg-cover bg-center bg-no-repeat py-8 overflow-hidden"
+    style={{
+      backgroundImage:
+        "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(/assets/img/bg-hero.jpg)",
+    }}
+  >
+    <div className="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48">
+      <div className="flex flex-col items-center justify-center lg:flex-row">
+        {/* Animated Profile Picture */}
+        <div className="relative rounded-full border-8 border-transparent ring-4 ring-white ring-opacity-30 animate-spin-slow">
+        <div className="relative rotating-ring">
+  <div className="rounded-full overflow-hidden shadow-xl relative z-10 border-4 border-transparent">
+    <Image
+      src="/assets/img/me.jpg"
+      className="h-48 w-48 sm:h-56 sm:w-56 object-cover"
+      alt="author"
+      width={224}
+      height={224}
+    />
+  </div>
+</div>
+        </div>
+
+        <div className="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
+          {/* Typewriter Animation */}
+          <h1 className="text-center font-header text-4xl text-white sm:text-left sm:text-5xl md:text-6xl typewriter">
+            Hello I'm <span className="text-yellow-400">Ashna Ghazanfar!</span>
+          </h1>
+
+          {/* Social Icons */}
+          <div className="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-4 space-x-6">
+            <a href="https://www.instagram.com/s_ashnaali/" target="_blank" rel="noopener" className="social-icon">
+              <FiInstagram className="w-8 h-8 text-white hover:text-pink-500 transition-colors" />
+            </a>
+            <a href="https://www.linkedin.com/in/ashna-ghazanfar-b268522b4/" target="_blank" rel="noopener" className="social-icon">
+              <FiLinkedin className="w-8 h-8 text-white hover:text-blue-500 transition-colors" />
+            </a>
+            <a href="https://github.com/Syedaashnaghazanfar" target="_blank" rel="noopener" className="social-icon">
+              <FiGithub className="w-8 h-8 text-white hover:text-gray-400 transition-colors" />
+            </a>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
       <div className="flex flex-col justify-around items-center">
         {/* about */}
-        <div className="bg-grey-50" id="about">
-          <div className="container flex flex-col items-center py-16 md:py-20 lg:flex-row">
-            <div className="w-full text-center sm:w-3/4 lg:w-3/5 lg:text-left">
-              <h2 className="font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
-                Who am I?
-              </h2>
-              <h4 className="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
-                I am Ashna Ghazanfar, a Front End Developer & Student
-              </h4>
-              <p className="pt-6 font-body leading-relaxed text-grey-20">
-                I am a first-year medical student with a passion for blending
-                science and technology. Alongside my medical studies, I am
-                enhancing my skills as a front-end developer. I have mastered
-                TypeScript, HTML, CSS, Next.js, and Figma, allowing me to create
-                visually stunning and functional web designs. Currently, I am
-                expanding my expertise by diving into backend development,
-                aiming to build well-rounded, full-stack solutions.
-              </p>
-              <div className="flex flex-col justify-center pt-6 sm:flex-row lg:justify-start"></div>
-            </div>
-            <div className="w-full px-4 pt-10 sm:w-3/4 lg:w-2/5 lg:px-6 lg:pt-0 mx-auto">
-              {/* HTML & CSS */}
-              <div>
-                <div className="flex items-end justify-between">
-                  <h4 className="font-body font-semibold uppercase text-black">
-                    HTML & CSS
-                  </h4>
-                  <h3 className="font-body text-3xl font-bold text-primary">
-                    85%
-                  </h3>
-                </div>
-                <div className="mt-2 h-3 w-full rounded-full bg-gray-300 relative">
-                  <div
-                    className="h-3 rounded-full bg-primary absolute top-0 left-0"
-                    style={{ width: "85%" }}
-                  ></div>
-                </div>
-              </div>
-
-              {/* Next.js */}
-              <div className="pt-6">
-                <div className="flex items-end justify-between">
-                  <h4 className="font-body font-semibold uppercase text-black">
-                    Next.js
-                  </h4>
-                  <h3 className="font-body text-3xl font-bold text-primary">
-                    70%
-                  </h3>
-                </div>
-                <div className="mt-2 h-3 w-full rounded-full bg-gray-300 relative">
-                  <div
-                    className="h-3 rounded-full bg-primary absolute top-0 left-0"
-                    style={{ width: "70%" }}
-                  ></div>
-                </div>
-              </div>
-
-              {/* Typescript */}
-              <div className="pt-6">
-                <div className="flex items-end justify-between">
-                  <h4 className="font-body font-semibold uppercase text-black">
-                    Typescript
-                  </h4>
-                  <h3 className="font-body text-3xl font-bold text-primary">
-                    98%
-                  </h3>
-                </div>
-                <div className="mt-2 h-3 w-full rounded-full bg-gray-300 relative">
-                  <div
-                    className="h-3 rounded-full bg-primary absolute top-0 left-0"
-                    style={{ width: "98%" }}
-                  ></div>
-                </div>
-              </div>
-
-              {/* Figma */}
-              <div className="pt-6">
-                <div className="flex items-end justify-between">
-                  <h4 className="font-body font-semibold uppercase text-black">
-                    Figma
-                  </h4>
-                  <h3 className="font-body text-3xl font-bold text-primary">
-                    91%
-                  </h3>
-                </div>
-                <div className="mt-2 h-3 w-full rounded-full bg-gray-300 relative">
-                  <div
-                    className="h-3 rounded-full bg-primary absolute top-0 left-0"
-                    style={{ width: "91%" }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="bg-gray-50 py-16" id="about">
+      <div className="container flex flex-col items-center lg:flex-row">
+        {/* About Me Section */}
+        <div className="w-full text-center sm:w-3/4 lg:w-3/5 lg:text-left">
+          <h2 className="text-5xl font-bold text-primary uppercase">Meet Ashna</h2>
+          <h4 className="pt-4 text-2xl font-medium text-gray-800">A Frontend Developer & Future Dermatologist</h4>
+          <p className="pt-4 text-lg text-gray-600 leading-relaxed">
+            Passionate about technology and medicine, I seamlessly blend my skills in frontend development with
+            my medical studies. I specialize in modern web technologies like TypeScript, Next.js, and Tailwind CSS.
+            Currently, I’m expanding my knowledge in backend development to create full-stack applications.
+          </p>
         </div>
+
+        {/* Skills Section */}
+        <div className="w-full px-6 pt-10 sm:w-3/4 lg:w-2/5 lg:pt-0 mx-auto">
+          {skills.map((skill, index) => (
+            <div key={index} className="mb-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  {skill.icon}
+                  <h4 className="text-lg font-semibold text-gray-900">{skill.name}</h4>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">{skill.percentage}%</h3>
+              </div>
+              <div className="mt-2 h-3 w-full rounded-full bg-gray-300 relative">
+                <div className={`h-3 rounded-full ${skill.color} absolute top-0 left-0`} style={{ width: `${skill.percentage}%` }}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
         {/* Services */}
         <div className="container py-16 md:py-20" id="services">
           <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
