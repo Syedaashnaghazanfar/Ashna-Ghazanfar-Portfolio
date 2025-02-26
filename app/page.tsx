@@ -9,6 +9,9 @@ import { FiInstagram, FiLinkedin, FiGithub } from 'react-icons/fi';
 import { FaHtml5, FaPython, FaFigma } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiSanity } from "react-icons/si";
 
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
 const HomePage = async () => {
   const posts: Post[] = await client.fetch(query); // Fetch posts using the globally defined client
   const skills = [
@@ -19,6 +22,51 @@ const HomePage = async () => {
     { name: "Python", icon: <FaPython className="text-yellow-500" />, percentage: 30, color: "bg-yellow-500" },
     { name: "Sanity", icon: <SiSanity className="text-red-500" />, percentage: 90, color: "bg-red-500" },
   ];
+    const projects = [
+      {
+        img: "/assets/img/dua.png",
+        title: "Dua's Diary",
+        desc: "A beautifully designed diary for daily prayers and reflections.",
+        link: "https://duas-diary.vercel.app/",
+      },
+      {
+        img: "/assets/img/coffee.png",
+        title: "Coffee Shop",
+        desc: "An elegant coffee shop website featuring an intuitive UI.",
+        link: "https://syeda-coffee-website.vercel.app/",
+      },
+      {
+        img: "/assets/img/shopEasy.png",
+        title: "Ecommerce Platform",
+        desc: "A user-friendly e-commerce platform with a modern design.",
+        link: "https://milestone-3-ecommerce-three.vercel.app/",
+      },
+      {
+        img: "/assets/img/shop.png",
+        title: "ShopCo",
+        desc: "An e-commerce platform designed for seamless shopping.",
+        link: "https://syeda-shop-co.vercel.app/",
+      },
+      {
+        img: "/assets/img/gemini-unit-converter.png",
+        title: "Gemini Powered Unit Converter",
+        desc: "A Unit Converter using python, Gemini API & Streamlit.",
+        link: "https://ashna-unit-converter.streamlit.app/",
+      },
+      {
+        img: "/assets/img/portfolio.png",
+        title: "Portfolio Website",
+        desc: "A fully responsive portfolio made using Nextjs.",
+        link: "https://syeda-ashna-portfolio-tailwind.vercel.app/",
+      },
+      {
+        img: "/assets/img/bandageweb.png",
+        title: "E-Commerce Platform",
+        desc: "A full stack project made using APIs, Sanity,Tailwind,Stripe,Clerk & Landbot.",
+        link: "https://bandage-app-nine.vercel.app/",
+        best: true,
+      },
+    ];
 
   return (
     <>
@@ -93,10 +141,9 @@ const HomePage = async () => {
         {/* About Me Section */}
         <div className="w-full text-center sm:w-3/4 lg:w-3/5 lg:text-left">
           <h2 className="text-5xl font-bold text-primary uppercase">Meet Ashna</h2>
-          <h4 className="pt-4 text-2xl font-medium text-gray-800">A Frontend Developer & Future Dermatologist</h4>
+          <h4 className="pt-4 text-2xl font-medium text-gray-800">A Frontend Developer</h4>
           <p className="pt-4 text-lg text-gray-600 leading-relaxed">
-            Passionate about technology and medicine, I seamlessly blend my skills in frontend development with
-            my medical studies. I specialize in modern web technologies like TypeScript, Next.js, and Tailwind CSS.
+            Passionate about technology, I seamlessly blend my skills in frontend development. I specialize in modern web technologies like TypeScript, Next.js, and Tailwind CSS.
             Currently, I’m expanding my knowledge in backend development to create full-stack applications.
           </p>
         </div>
@@ -165,65 +212,34 @@ const HomePage = async () => {
 
         {/* portfolio */}
         <div className="container py-16 md:py-20" id="portfolio">
-          <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
-            Check out my Portfolio
-          </h2>
-          <h3 className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
-            Here is what I have done with the past
-          </h3>
+      <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+        Check out my Portfolio
+      </h2>
+      <h3 className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+        Here is what I have done in the past
+      </h3>
 
-          <div className="mx-auto grid w-full grid-cols-1 gap-8 px-4 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2 lg:px-8">
-            <Link
-              href="https://duas-diary.vercel.app/"
-              className="mx-auto transform transition-all hover:scale-105 md:mx-0"
-            >
-              <Image
-                src="/assets/img/dua.png"
-                className="w-full shadow"
-                alt="portfolio image"
-                width={500}
-                height={500}
-
-              />
-            </Link>
-            <Link
-              href="https://syeda-coffee-website.vercel.app/"
-              className="mx-auto transform transition-all hover:scale-105 md:mx-0"
-            >
-              <Image
-                src="/assets/img/coffee.png"
-                className="w-full shadow"
-                alt="portfolio image"
-                width={500}
-                height={500}
-              />
-            </Link>
-            <Link
-              href="https://syeda-ui-ux-hackhaton.vercel.app/"
-              className="mx-auto transform transition-all hover:scale-105 md:mx-0"
-            >
-              <Image
-                src="/assets/img/bandage.png"
-                className="w-full shadow"
-                alt="portfolio image"
-                width={500}
-                height={500}
-              />
-            </Link>
-            <Link
-              href="https://syeda-shop-co.vercel.app/"
-              className="mx-auto transform transition-all hover:scale-105 md:mx-0"
-            >
-              <Image
-                src="/assets/img/shop.png"
-                className="w-full shadow"
-                alt="portfolio image"
-                width={500}
-                height={500}
-              />
+      <div className="mx-auto grid w-full grid-cols-1 gap-8 px-4 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2 xl:grid-cols-3 lg:px-8">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className={`relative overflow-hidden rounded-lg shadow-lg p-6 border-2 border-yellow-400 transition-all duration-500 hover:scale-105 ${
+              project.best ? "col-span-2 lg:col-span-2 xl:col-span-2 border-4 border-yellow-500" : ""
+            }`}
+          >
+            {project.best && (
+              <Badge className="absolute top-4 right-4 bg-yellow-500 text-white">Best of All</Badge>
+            )}
+            <Image src={project.img} alt={project.title} width={500} height={300} className="w-full rounded-md" />
+            <h3 className="pt-4 text-xl font-semibold uppercase text-primary">{project.title}</h3>
+            <p className="pt-2 text-gray-700 text-sm md:text-base">{project.desc}</p>
+            <Link href={project.link} className="inline-block mt-4">
+              <Button className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white">View Project</Button>
             </Link>
           </div>
-        </div>
+        ))}
+      </div>
+    </div>
       </div>
       <div>
         {/* statistics */}
