@@ -467,7 +467,7 @@ const HomePage = async () => {
     Contact Me
   </h2>
   <p className="mt-4 text-lg text-gray-700">
-    Let's connect! Reach out to me on:
+    Let us connect! Reach out to me on:
   </p>
 
   <div className="flex justify-center gap-6 mt-8 text-white text-3xl">
