@@ -77,16 +77,6 @@ const Portfolio = () => {
       transition: { type: "spring", stiffness: 100 },
     },
   };
-
-  const hoverEffect = {
-    hover: {
-      y: -10,
-      scale: 1.02,
-      boxShadow: "0 0 25px rgba(234, 179, 8, 0.3)",
-      transition: { type: "spring", stiffness: 300 },
-    },
-  };
-
   return (
     <div className="bg-black py-16 md:py-20" id="portfolio">
       <div className="container px-4 sm:px-8 lg:px-16">

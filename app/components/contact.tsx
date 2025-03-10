@@ -19,7 +19,7 @@ const Contact = () => {
           Get In Touch
         </h2>
         <p className="mt-4 text-lg text-gray-300 text-center">
-          Let's create something amazing together
+          Let us create something amazing together
         </p>
 
         {/* Contact Form */}

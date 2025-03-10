@@ -56,15 +56,6 @@ const Services = () => {
     },
   };
 
-  const hoverEffect = {
-    hover: {
-      y: -10,
-      scale: 1.02,
-      boxShadow: "0 25px 50px -12px rgba(234, 179, 8, 0.25)",
-      transition: { type: "spring", stiffness: 300 },
-    },
-  };
-
   const floatAnimation = {
     float: {
       y: [0, -20, 0],

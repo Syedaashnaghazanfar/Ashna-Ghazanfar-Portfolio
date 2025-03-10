@@ -6,7 +6,6 @@ import {
   FiSettings,
   FiBriefcase,
   FiBarChart,
-  FiBook,
   FiMail,
   FiMenu,
   FiX,

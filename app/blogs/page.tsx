@@ -4,6 +4,7 @@ import { client } from "@/sanity/lib/client";
 import { query } from "@/sanity/lib/queries";
 import Link from "next/link";
 import { FiArrowUpRight, FiArrowLeft } from "react-icons/fi";
+import Image from "next/image";
 
 const Blog = async () => {
   const posts: Post[] = await client.fetch(query);
@@ -43,7 +44,7 @@ const Blog = async () => {
               <Link href={`/post/${post.slugCurrent}`} className="block">
                 {/* Image Container */}
                 <div className="relative aspect-video overflow-hidden rounded-t-xl">
-                  <img
+                  <Image
                     src={post?.mainImageUrl || "/default-image.jpg"}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
