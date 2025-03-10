@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaCommentDots, FaPaperPlane } from "react-icons/fa";
+import { FiSmile } from "react-icons/fi";
+
 interface Comment {
   id: string;
   text: string;
@@ -11,7 +13,7 @@ const Comments = () => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [commentText, setCommentText] = useState<string>("");
 
-  // Load comments from localStorage on component ount
+  // Load comments from localStorage on component mount
   useEffect(() => {
     const savedComments = localStorage.getItem("comments");
     if (savedComments) {
@@ -19,86 +21,100 @@ const Comments = () => {
     }
   }, []);
 
-  // Save comments to localStorage whenever the comments change 
+  // Save comments to localStorage whenever the comments change
   useEffect(() => {
-    if (comments.length > 0) {
-      localStorage.setItem("comments", JSON.stringify(comments));
-    }
+    localStorage.setItem("comments", JSON.stringify(comments));
   }, [comments]);
 
-  // Handle comment text change
   const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCommentText(event.target.value);
   };
 
-  // Handle comment submission
   const handleCommentSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-
     if (commentText.trim()) {
       const newComment: Comment = {
-        id: new Date().toISOString(), // Unique ID for the comment
+        id: new Date().toISOString(),
         text: commentText,
         date: new Date().toLocaleString(),
       };
-
-      setComments((prevComments) => [newComment, ...prevComments]);
-      setCommentText(""); // Clear input field after submission
+      setComments((prev) => [newComment, ...prev]);
+      setCommentText("");
     }
   };
 
-  // Handle comment deletion
   const handleDeleteComment = (commentId: string) => {
-    setComments((prevComments) => prevComments.filter((comment) => comment.id !== commentId));
+    setComments((prev) => prev.filter((comment) => comment.id !== commentId));
   };
 
   return (
-    <div className="comment-section p-6 max-w-4xl mx-auto border-2 border-solid border-gray-700 rounded-lg shadow-lg mb-6 mt-6">
-    <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">Comments</h2>
-  
-    {/* Comment Input */}
-    <form onSubmit={handleCommentSubmit} className="my-6 space-y-4">
-      <input
-        type="text"
-        value={commentText}
-        onChange={handleCommentChange}
-        placeholder="Write your comment..."
-        className="w-full p-3 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 dark:focus:ring-primary focus:ring-gray-600"
-      />
-      <button
-        type="submit"
-        className="w-full py-3 bg-gray-600 hover:bg-gray-500 dark:bg-primary text-white dark:text-black dark:hover:text-white rounded-lg dark:hover:bg-primary-foreground transition-colors duration-200"
-      >
-        Submit
-      </button>
-    </form>
-  
-    {/* Display Comments */}
-    {comments.length === 0 ? (
-      <p className="text-center text-gray-500">No comments yet. Be the first to comment!</p>
-    ) : (
-      <ul className="space-y-6">
-        {comments.map((comment) => (
-          <li
-            key={comment.id}
-            className="ml-0 p-4 border border-gray-600 rounded-lg bg-gray-300 text-gray-200 flex justify-between"
+    <div className="p-6 max-w-4xl mx-auto bg-black rounded-xl border-2 border-yellow-400 shadow-2xl shadow-yellow-400/20 mb-6 mt-6">
+      {/* Header with Icon */}
+      <div className="flex items-center gap-3 mb-8">
+        <FaCommentDots className="text-yellow-400 text-3xl" />
+        <h2 className="text-3xl font-bold text-yellow-400">Community Discussions</h2>
+      </div>
+
+      {/* Comment Input */}
+      <form onSubmit={handleCommentSubmit} className="mb-10 group">
+        <div className="relative">
+          <input
+            type="text"
+            value={commentText}
+            onChange={handleCommentChange}
+            placeholder="Share your thoughts..."
+            className="w-full p-4 pl-12 bg-black border-2 border-yellow-400 rounded-lg
+                      text-yellow-300 placeholder-yellow-400/60 focus:outline-none
+                      focus:ring-2 focus:ring-yellow-400 focus:border-transparent
+                      transition-all duration-300"
+          />
+          <FiSmile className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-400 text-xl" />
+          <button
+            type="submit"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-yellow-400
+                      rounded-lg hover:bg-yellow-300 transition-colors duration-200"
           >
-            <div>
-              <p className="text-lg text-black dark:text-white">{comment.text}</p>
-              <span className="text-sm text-gray-800">{comment.date}</span>
-            </div>
-            <button
-              onClick={() => handleDeleteComment(comment.id)}
-              className="ml-4 text-red-500 hover:text-red-700 transition-colors"
+            <FaPaperPlane className="text-black text-xl" />
+          </button>
+        </div>
+      </form>
+
+      {/* Comments List */}
+      {comments.length === 0 ? (
+        <div className="text-center py-8 border-2 border-dashed border-yellow-400/30 rounded-lg">
+          <p className="text-yellow-400/60 text-lg">Be the first to spark the conversation! 💬</p>
+        </div>
+      ) : (
+        <ul className="space-y-4">
+          {comments.map((comment) => (
+            <li
+              key={comment.id}
+              className="p-4 bg-black/50 border-2 border-yellow-400/20 rounded-lg
+                        hover:border-yellow-400/40 transition-all duration-300 group"
             >
-              <FaTrashAlt />
-            </button>
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
-  
+              <div className="flex justify-between items-start">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                      <FaCommentDots className="text-black text-sm" />
+                    </div>
+                    <span className="text-yellow-400/80 text-sm">{comment.date}</span>
+                  </div>
+                  <p className="text-yellow-300 ml-11">{comment.text}</p>
+                </div>
+                <button
+                  onClick={() => handleDeleteComment(comment.id)}
+                  className="text-red-400/80 hover:text-red-300 p-2 rounded-lg
+                            hover:bg-red-900/20 transition-colors duration-200"
+                >
+                  <FaTrashAlt className="text-lg" />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 

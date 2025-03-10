@@ -1,37 +1,48 @@
 "use client";
-import { useState } from 'react';
-import { 
-  FiHome, 
-  FiUser, 
-  FiSettings, 
-  FiBriefcase, 
-  FiBarChart, 
-  FiBook, 
-  FiMail, 
-  FiMenu, 
+import { useState } from "react";
+import {
+  FiHome,
+  FiUser,
+  FiSettings,
+  FiBriefcase,
+  FiBarChart,
+  FiBook,
+  FiMail,
+  FiMenu,
   FiX,
-  FiChevronRight 
-} from 'react-icons/fi';
+  FiChevronRight,
+} from "react-icons/fi";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', icon: <FiHome className="w-5 h-5" />, link: '#home' },
-    { name: 'About', icon: <FiUser className="w-5 h-5" />, link: '#about' },
-    { name: 'Services', icon: <FiSettings className="w-5 h-5" />, link: '#services' },
-    { name: 'Portfolio', icon: <FiBriefcase className="w-5 h-5" />, link: '#portfolio' },
-    { name: 'Statistics', icon: <FiBarChart className="w-5 h-5" />, link: '#statistics' },
-    { name: 'Blog', icon: <FiBook className="w-5 h-5" />, link: '#blog' },
-    { name: 'Contact', icon: <FiMail className="w-5 h-5" />, link: '#contact' },
+    { name: "Home", icon: <FiHome className="w-5 h-5" />, link: "#home" },
+    { name: "About", icon: <FiUser className="w-5 h-5" />, link: "#about" },
+    {
+      name: "Services",
+      icon: <FiSettings className="w-5 h-5" />,
+      link: "#services",
+    },
+    {
+      name: "Portfolio",
+      icon: <FiBriefcase className="w-5 h-5" />,
+      link: "#portfolio",
+    },
+    {
+      name: "Statistics",
+      icon: <FiBarChart className="w-5 h-5" />,
+      link: "#statistics",
+    },
+    { name: "Contact", icon: <FiMail className="w-5 h-5" />, link: "#contact" },
   ];
 
   return (
     <nav className="bg-black fixed top-0 left-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6">
         {/* Logo with Home Link */}
-        <a 
-          href="#home" 
+        <a
+          href="#home"
           className="flex items-center text-white font-header text-xl md:text-2xl uppercase whitespace-nowrap ml-2 md:ml-6 hover:text-yellow-400 transition-colors"
         >
           <span>Ashna Ghazanfar</span>
@@ -71,12 +82,14 @@ function Navbar() {
         {/* Mobile Menu Overlay */}
         <div
           className={`lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
-            isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+            isOpen ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
         >
-          <div className={`absolute top-0 right-0 w-64 h-full bg-black/95 transform transition-transform duration-300 ease-in-out shadow-xl ${
-            isOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}>
+          <div
+            className={`absolute top-0 right-0 w-64 h-full bg-black/95 transform transition-transform duration-300 ease-in-out shadow-xl ${
+              isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
             <div className="flex flex-col h-full p-4">
               {/* Close Button */}
               <button
@@ -97,7 +110,9 @@ function Navbar() {
                     >
                       <div className="flex items-center">
                         {item.icon}
-                        <span className="ml-3 text-base font-medium">{item.name}</span>
+                        <span className="ml-3 text-base font-medium">
+                          {item.name}
+                        </span>
                       </div>
                       <FiChevronRight className="w-5 h-5" />
                     </a>

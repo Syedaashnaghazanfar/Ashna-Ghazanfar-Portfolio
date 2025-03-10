@@ -5,6 +5,7 @@ import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import { TypedObject } from "sanity";
 import Link from 'next/link';
+import { FaArrowLeft } from "react-icons/fa";
 
 interface Post {
   authorName: string;
@@ -55,59 +56,69 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <>
-      {/* Custom Navbar */}
-      <nav className="bg-black text-white py-4 px-6 flex justify-between items-center shadow-md">
-        <Link href="/">
-          <span className="text-xl font-bold cursor-pointer">Ashna Ghazanfar</span>
+      <nav className="bg-black border-b border-yellow-400/30 py-5 px-6 md:px-8 flex justify-between items-center sticky top-0 z-50">
+        <Link href="/" className="group flex items-center gap-2">
+          <span className="text-2xl font-bold text-yellow-400 transition-all duration-300 hover:text-yellow-300">
+            Ashna Ghazanfar
+          </span>
         </Link>
-        <Link href="/" className="bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-gray-200 transition">
-          Back
+        <Link 
+          href="/blogs" 
+          className="flex items-center gap-2 px-5 py-2.5 bg-yellow-400/90 text-black rounded-full 
+                    hover:bg-yellow-300 transition-all duration-300 group"
+        >
+          <FaArrowLeft className="group-hover:-translate-x-0.5 transition-transform" />
+          <span className="font-medium">Back to Blog</span>
         </Link>
       </nav>
 
-      <div className="relative bg-gray-100 min-h-screen py-10 px-4 md:px-0">
-        <div className="container mx-auto max-w-3xl bg-white shadow-lg rounded-lg overflow-hidden">
-          {/* Post Header */}
-          <div className="relative w-full h-64 md:h-80">
-            <Image
-              src={post.mainImageUrl || "/assets/img/default.jpg"}
-              layout="fill"
-              objectFit="cover"
-              alt="Post Image"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-              <h1 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
-                {post.title}
-              </h1>
+      <main className="min-h-screen bg-gradient-to-b from-black/95 to-black/80 pt-12 pb-20 px-4 md:px-0">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-16 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 mb-6 px-4 leading-tight">
+              {post.title}
+            </h1>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <Image
+                src={post.authorImage || "/assets/img/me.jpg"}
+                width={56}
+                height={56}
+                className="rounded-full border-2 border-yellow-400"
+                alt="Author"
+              />
+              <div className="text-left">
+                <p className="text-lg text-yellow-300 font-medium">By: {post.authorName}</p>
+                <p className="text-sm text-yellow-400/80">{formattedDate}</p>
+              </div>
             </div>
           </div>
 
-          {/* Author Section */}
-          <div className="flex flex-col md:flex-row items-center py-6 px-6 bg-gray-50 border-b border-gray-200">
-            <Image
-              src={post.authorImage || "/assets/img/me.jpg"}
-              width={80}
-              height={80}
-              className="rounded-full border-2 border-gray-300 shadow-md"
-              alt="Author"
-            />
-            <div className="mt-4 md:mt-0 md:ml-5 text-center md:text-left">
-              <p className="text-xl font-semibold text-gray-700">By {post.authorName || "Ashna Ghazanfar"}</p>
-              <p className="text-sm text-gray-500">Published on: {formattedDate}</p>
+          <article className="prose prose-invert prose-lg max-w-3xl mx-auto mb-24">
+            <div className="text-yellow-200/90 leading-relaxed">
+              <PortableText value={post.body} />
             </div>
-          </div>
+          </article>
 
-          {/* Post Body */}
-          <div className="prose prose-lg max-w-none px-6 py-8 text-gray-800 leading-relaxed">
-            <PortableText value={post.body} />
+          <div className="max-w-4xl mx-auto">
+            <div className="p-8 bg-black/50 rounded-2xl border border-yellow-400/20 backdrop-blur-sm">
+              <div className="flex items-center gap-3 mb-8">
+                <h2 className="text-3xl font-bold text-yellow-400">
+                  Join the Conversation
+                </h2>
+                <div className="w-12 h-px bg-yellow-400/40 flex-1" />
+              </div>
+              <Comments />
+            </div>
           </div>
         </div>
-      </div>
+      </main>
 
-      <Comments />
-
-      <footer className="bg-black py-6 text-center">
-        <p className="text-white text-sm">© 2024. All rights reserved, Ashna Ghazanfar.</p>
+      <footer className="bg-black border-t border-yellow-400/20 py-8">
+        <div className="container mx-auto text-center">
+          <p className="text-yellow-400/70 text-sm">
+            © {new Date().getFullYear()} Ashna Ghazanfar. All thoughts preserved.
+          </p>
+        </div>
       </footer>
     </>
   );
