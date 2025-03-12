@@ -52,7 +52,7 @@ const Comments = () => {
       {/* Header with Icon */}
       <div className="flex items-center gap-3 mb-8">
         <FaCommentDots className="text-yellow-400 text-3xl" />
-        <h2 className="text-3xl font-bold text-yellow-400">Community Discussions</h2>
+        <h2 className="text-3xl font-bold text-yellow-400">Comments</h2>
       </div>
 
       {/* Comment Input */}
@@ -63,7 +63,7 @@ const Comments = () => {
             value={commentText}
             onChange={handleCommentChange}
             placeholder="Share your thoughts..."
-            className="w-full p-4 pl-12 bg-black border-2 border-yellow-400 rounded-lg
+            className="w-full p-4 pl-10 bg-black border-2 border-yellow-400 rounded-lg
                       text-yellow-300 placeholder-yellow-400/60 focus:outline-none
                       focus:ring-2 focus:ring-yellow-400 focus:border-transparent
                       transition-all duration-300"
@@ -82,7 +82,7 @@ const Comments = () => {
       {/* Comments List */}
       {comments.length === 0 ? (
         <div className="text-center py-8 border-2 border-dashed border-yellow-400/30 rounded-lg">
-          <p className="text-yellow-400/60 text-lg">Be the first to spark the conversation! 💬</p>
+          <p className="text-yellow-400/60 text-lg">Be the first to spark the conversation!</p>
         </div>
       ) : (
         <ul className="space-y-4">

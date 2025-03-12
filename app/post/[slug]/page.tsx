@@ -75,7 +75,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <main className="min-h-screen bg-gradient-to-b from-black/95 to-black/80 pt-12 pb-20 px-4 md:px-0">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 mb-6 px-4 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 mb-6 px-4 leading-tight neon-glow">
               {post.title}
             </h1>
             <div className="flex items-center justify-center gap-4 mb-8">
