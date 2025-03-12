@@ -4,6 +4,10 @@
 html{
   scroll-behavior: smooth;
 }
+html,
+body {
+  overflow-x: hidden;
+}
 /* font */
 :root {
   font-family: var(--font-sansita), sans-serif;
