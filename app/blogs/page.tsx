@@ -3,7 +3,7 @@ import { Post } from "@/types/post";
 import { client } from "@/sanity/lib/client";
 import { query } from "@/sanity/lib/queries";
 import Link from "next/link";
-import { FiArrowUpRight, FiArrowLeft } from "react-icons/fi";
+import { FiArrowUpRight} from "react-icons/fi";
 import Image from "next/image";
 import { FaArrowLeft } from "react-icons/fa";
 
