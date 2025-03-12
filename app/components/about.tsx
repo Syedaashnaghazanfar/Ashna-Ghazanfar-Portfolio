@@ -4,6 +4,50 @@ import { FaHtml5, FaPython, FaFigma } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiSanity } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
+interface Skill {
+  name: string;
+  icon: any;
+  percentage: number;
+  color: string;
+}
+
+const SkillItem = ({ skill, index }: { skill: Skill; index: number }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  return (
+    <motion.div
+      key={index}
+      ref={ref}
+      initial={{ opacity: 0, x: -30 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="space-y-2"
+    >
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <span className="text-2xl text-yellow-400">{skill.icon}</span>
+          <span className="text-lg font-medium text-gray-300">
+            {skill.name}
+          </span>
+        </div>
+        <span className="text-gray-400 font-medium">{skill.percentage}%</span>
+      </div>
+
+      <div className="h-2.5 bg-gray-800 rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={inView ? { width: `${skill.percentage}%` } : {}}
+          transition={{ duration: 1.5, delay: index * 0.1 }}
+          className={`h-full ${skill.color} rounded-full`}
+        />
+      </div>
+    </motion.div>
+  );
+};
+
 const About = () => {
   const skills = [
     { name: "HTML & CSS", icon: <FaHtml5 />, percentage: 85, color: "bg-orange-500" },
@@ -62,39 +106,9 @@ const About = () => {
 
           {/* Skills Container */}
           <div className="flex-1 space-y-10">
-            {skills.map((skill, index) => {
-              const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-
-              return (
-                <motion.div
-                  key={index}
-                  ref={ref}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-2xl text-yellow-400">{skill.icon}</span>
-                      <span className="text-lg font-medium text-gray-300">
-                        {skill.name}
-                      </span>
-                    </div>
-                    <span className="text-gray-400 font-medium">{skill.percentage}%</span>
-                  </div>
-
-                  <div className="h-2.5 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={inView ? { width: `${skill.percentage}%` } : {}}
-                      transition={{ duration: 1.5, delay: index * 0.1 }}
-                      className={`h-full ${skill.color} rounded-full`}
-                    />
-                  </div>
-                </motion.div>
-              );
-            })}
+            {skills.map((skill, index) => (
+              <SkillItem key={index} skill={skill} index={index} />
+            ))}
           </div>
         </motion.div>
       </div>
