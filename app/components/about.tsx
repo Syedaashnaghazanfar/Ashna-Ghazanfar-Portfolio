@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import { FaHtml5, FaPython, FaFigma } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiSanity } from "react-icons/si";
@@ -6,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 
 interface Skill {
   name: string;
-  icon: any;
+  icon: React.ReactElement;
   percentage: number;
   color: string;
 }
