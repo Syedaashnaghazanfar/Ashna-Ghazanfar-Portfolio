@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { FiUser, FiMail, FiMessageSquare } from "react-icons/fi";
-import { FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
 const Contact = () => {
@@ -113,12 +113,12 @@ const Contact = () => {
           </Link>
 
           <Link
-            href="https://web.whatsapp.com/send?phone=923312392814"
+            href="https://github.com/syedaashnaghazanfar"
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 rounded-full text-yellow-400 hover:bg-yellow-400/10 transition-all"
           >
-            <FaWhatsapp className="w-8 h-8" />
+            <FaGithub className="w-8 h-8" />
           </Link>
         </div>
       </div>
